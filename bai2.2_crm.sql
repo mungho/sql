@@ -1,0 +1,27 @@
+CREATE TABLE customer (
+cID INT PRIMARY KEY,
+cName VARCHAR(50),
+cAge INT
+);
+
+CREATE TABLE orders(
+oID INT PRIMARY KEY,
+cID INT,
+oDate DATE,
+oTotalPrice INT,
+FOREIGN KEY (oID) REFERENCES customer(cID)
+);
+
+CREATE TABLE product (
+pID INT PRIMARY KEY,
+pName VARCHAR(50),
+pPrice INT
+);
+
+CREATE TABLE orderdetail (
+oID INT,
+pID INT,
+odQTY INT,
+FOREIGN KEY (oID) REFERENCES orders(oID),
+FOREIGN KEY (pID) REFERENCES product(pID)
+);
